@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -25,16 +24,14 @@ SECRET_KEY = '_=jkwd^)9rnh5xqg=j0hnmg+@=r4tk^&o8a!&^a=19^+y&-za@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
 # This can be used to toggle between your local testing db (db.sqlite3) and the PostgreSQL backend:
 DOCKER = True
 
 ALLOWED_HOSTS = []
 
 if DEBUG:
-   # This value is not safe for production usage. Refer to the Django documentation for more information.
-   ALLOWED_HOSTS = ['*']
-
+    # This value is not safe for production usage. Refer to the Django documentation for more information.
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -45,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +60,7 @@ ROOT_URLCONF = 'bankAccountAdministration.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,13 +68,31 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'bankAccountAdministration.wsgi.application'
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '843084232416-mgvr7suqag17h6a1huf8r3327cul0659.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'OPlvDCA_YVph3CGT8HM6Ur-Y'
+
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+WSGI_APPLICATION = 'bankAccountAdministration.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -99,7 +115,6 @@ else:
         }
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -118,7 +133,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -131,7 +145,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
