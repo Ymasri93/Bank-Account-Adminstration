@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<h1>Bank Users</h1>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>IBAN</th>
+				<th>View</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for bank_user in object_list %}
+				<tr>
+					<td>{{ bank_user.first_name }}</td>
+					<td>{{ bank_user.last_name }}</td>
+					<td>{{ bank_user.iban }}</td>
+					<td><a href="{% url "bank_user_view" bank_user.id %}">view</a></td>
+					<td><a href="{% url "bank_user_edit" bank_user.id %}">edit</a></td>
+					<td><a href="{% url "bank_user_delete" bank_user.id %}">delete</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{% url "bank_user_new" %}">New</a>
+
+{% endblock content %}
