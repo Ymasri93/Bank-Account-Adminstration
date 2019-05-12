@@ -24,4 +24,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path(r'auth/', include('social_django.urls', namespace='social')),
     path(r'', home, name='home'),
+    path('bank-users/', include('bank_users.urls')),
+
 ]

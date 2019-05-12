@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<h1>Bank User Details</h1>
+	<h2>Name: {{ object.first_name }} {{ object.last_name }}</h2>
+	IBAN: {{ object.iban }}
+{% endblock content %}
