@@ -12,6 +12,14 @@ def has_permission(created_by, request_user):
     return created_by != request_user
 
 
+from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+from bank_users.models import BankUser
+
+
 class BankUserList(ListView):
     model = BankUser
 
@@ -42,6 +50,15 @@ class BankUserUpdate(UpdateView):
         if obj.created_by == self.request.user:
             raise PermissionDenied()  # or Http404
         return obj
+
+    fields = ['first_name', 'last_name', 'iban']
+    success_url = reverse_lazy('bank_user_list')
+
+
+class BankUserUpdate(UpdateView):
+    model = BankUser
+    fields = ['first_name', 'last_name', 'iban']
+    success_url = reverse_lazy('bank_user_list')
 
 
 class BankUserDelete(DeleteView):
