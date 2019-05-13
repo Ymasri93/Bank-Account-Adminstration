@@ -2,6 +2,7 @@
 
 {% block content %}
 	<h1>Bank User Details</h1>
-	<h2>Name: {{ object.first_name }} {{ object.last_name }}</h2>
-	IBAN: {{ object.iban }}
+	<h4>Name: {{ object.first_name }} {{ object.last_name }}</h4>
+	<h4> IBAN: {{ object.iban }}</h4>
+	<h4>Created_by: {{ object.created_by }}</h4>
 {% endblock content %}
