@@ -23,3 +23,5 @@ Bank Account Administration Panel
   5) Apply the migration files `docker-compose exec web python manage.py migrate`
   6) go to http://localhost:8990/ in your web browser
 
+# IBAN EXAMPLES
+  https://www.citadele.lt/en/iban-examples/
