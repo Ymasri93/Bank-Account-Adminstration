@@ -1,8 +1,8 @@
-# Assignment Stroer
+# Description
 Bank Account Administration Panel
 
-# Description
-  This simple app does the following:-
+# Features
+  This app does the following features:-
 
     1) Login using google
     2) create, read, update and delete bank_users (bank_users consist of first_name, last_name and IBAN) (form validation)
