@@ -17,7 +17,7 @@ Bank Account Administration Panel
   To run the app locally you need to:-
 
   1) have docker and docker-compose installed on your device
-  2) clone the repository `git clone https://github.com/Ymasri93/assignment_stroer.git`
+  2) clone the repository `git clone https://github.com/Ymasri93/Bank-Account-Adminstration.git`
   3) build the docker image `docker-compose build`
   4) start the docker-container in the background `docker-compose up -d`
   5) Apply the migration files `docker-compose exec web python manage.py migrate`
