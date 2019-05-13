@@ -1,16 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 	{% if object %}
 		<h1>Bank User Edit</h1>
 	{% else %}
 		<h1>Bank User New</h1>
 	{% endif %}
 
-=======
-	<h1>Bank User Edit</h1>
->>>>>>> 41ae8daffd240ad185b5f5f964abf0335dd6bb29
 	<form method="post">{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Submit"/>
