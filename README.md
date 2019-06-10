@@ -1,5 +1,5 @@
 # Description
-Bank Account Administration Panel
+Simple App created to test docker and django CBV
 
 # Features
   This app does the following features:-
